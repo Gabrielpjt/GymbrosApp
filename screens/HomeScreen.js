@@ -31,12 +31,12 @@ function HomeScreen({ navigation }) {
           navigation={navigation}
           screen="Push Up Biasa"
         />
-        <KelasBox 
+        {/* <KelasBox 
           judul="Latihan otot Perut"
           deskripsi="Latihan : Sit up, Plank, Puntir Perut"
           gambar={require('../assets/situp.jpeg')}
           navigation={navigation}
-        />
+        /> */}
         {/* Tambahkan KelasBox lainnya di sini */}
       </View>
       <Navbar navigation={navigation} />
