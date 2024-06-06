@@ -49,7 +49,7 @@ function AuthContent({ isLogin, onAuthenticate }) {
       });
       return;
     }
-    onAuthenticate({ username, password });
+    onAuthenticate({ akun : credentials });
   }
 
   return (

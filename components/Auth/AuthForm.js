@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { StyleSheet, View, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { StyleSheet, View, ScrollView, KeyboardAvoidingView, Platform, TextInput } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 
 import Button from '../ui/Button';
@@ -11,14 +11,15 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
   const [enteredConfirmUsername, setEnteredConfirmUsername] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
   const [enteredConfirmPassword, setEnteredConfirmPassword] = useState('');
-  const [enteredGender, setEnteredGender] = useState('');
-  const [enteredAlamat, setEnteredAlamat] = useState('');
-  const [enteredGolDarah, setEnteredGolDarah] = useState('');
   const [enteredOccupation, setEnteredOccupation] = useState('');
+  const [enteredAlamat, setEnteredAlamat] = useState('');
+  const [enteredGender, setEnteredGender] = useState('');
+  const [enteredGolDarah, setEnteredGolDarah] = useState('');
+  const [enteredAge, setEnteredAge] = useState('');
 
   const {
     username: usernameIsInvalid,
-    confirmusername: usernamesDontMatch,
+    confirmUsername: usernamesDontMatch,
     password: passwordIsInvalid,
     confirmPassword: passwordsDontMatch,
   } = credentialsInvalid;
@@ -37,17 +38,20 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
       case 'confirmPassword':
         setEnteredConfirmPassword(enteredValue);
         break;
-      case 'gender':
-        setEnteredGender(enteredValue);
+      case 'occupation':
+        setEnteredOccupation(enteredValue);
         break;
       case 'alamat':
         setEnteredAlamat(enteredValue);
         break;
+      case 'gender':
+        setEnteredGender(enteredValue);
+        break;
       case 'golDarah':
         setEnteredGolDarah(enteredValue);
         break;
-      case 'occupation':
-        setEnteredOccupation(enteredValue);
+      case 'age':
+        setEnteredAge(enteredValue);
         break;
       default:
         break;
@@ -60,10 +64,11 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
       confirmUsername: enteredConfirmUsername,
       password: enteredPassword,
       confirmPassword: enteredConfirmPassword,
-      gender: enteredGender,
-      alamat: enteredAlamat,
-      golDarah: enteredGolDarah,
       occupation: enteredOccupation,
+      alamat: enteredAlamat,
+      gender: enteredGender,
+      golDarah: enteredGolDarah,
+      age: enteredAge,
     });
   }
 
@@ -72,7 +77,10 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
       style={styles.keyboardAvoidingView}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+      <ScrollView
+        contentContainerStyle={styles.scrollViewContent}
+        keyboardShouldPersistTaps="handled" // Memastikan input tetap dapat diakses saat keyboard muncul
+      >
         <View style={styles.form}>
           <Input
             label="Username"
@@ -107,6 +115,20 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
             />
           )}
           {!isLogin && (
+            <Input
+              label="Occupation"
+              onUpdateValue={updateInputValueHandler.bind(this, 'occupation')}
+              value={enteredOccupation}
+            />
+          )}
+          {!isLogin && (
+            <Input
+              label="Alamat"
+              onUpdateValue={updateInputValueHandler.bind(this, 'alamat')}
+              value={enteredAlamat}
+            />
+          )}
+          {!isLogin && (
             <Dropdown
               style={styles.dropdown}
               data={[
@@ -121,24 +143,27 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
             />
           )}
           {!isLogin && (
-            <Input
-              label="Alamat"
-              onUpdateValue={updateInputValueHandler.bind(this, 'alamat')}
-              value={enteredAlamat}
-            />
-          )}
-          {!isLogin && (
-            <Input
-              label="Golongan Darah"
-              onUpdateValue={updateInputValueHandler.bind(this, 'golDarah')}
+            <Dropdown
+              style={styles.dropdown}
+              data={[
+                { label: 'A', value: 'A' },
+                { label: 'B', value: 'B' },
+                { label: 'AB', value: 'AB' },
+                { label: 'O', value: 'O' },
+              ]}
+              labelField="label"
+              valueField="value"
               value={enteredGolDarah}
+              onChange={(item) => updateInputValueHandler('golDarah', item.value)}
+              placeholder="Select Golongan Darah"
             />
           )}
           {!isLogin && (
             <Input
-              label="Occupation"
-              onUpdateValue={updateInputValueHandler.bind(this, 'occupation')}
-              value={enteredOccupation}
+              label="Age"
+              onUpdateValue={updateInputValueHandler.bind(this, 'age')}
+              keyboardType="numeric"
+              value={enteredAge}
             />
           )}
           <View style={styles.buttons}>
@@ -146,13 +171,13 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
               {isLogin ? 'Log In' : 'Sign Up'}
             </Button>
           </View>
+          {/* Spacer to push the button into view when the keyboard is up */}
+          <View style={styles.spacer} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 }
-
-export default AuthForm;
 
 const styles = StyleSheet.create({
   keyboardAvoidingView: {
@@ -163,7 +188,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   form: {
-    marginTop: 40,
+    marginTop: 20, // Menambah margin atas untuk memberikan ruang antara form dan header
     marginHorizontal: 24,
     padding: 16,
     borderRadius: 8,
@@ -175,7 +200,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
   },
   dropdown: {
-    marginTop: 16,
+    marginTop: 40,
     marginBottom: 8,
     borderRadius: 4,
     backgroundColor: 'white',
@@ -183,5 +208,13 @@ const styles = StyleSheet.create({
   },
   buttons: {
     marginTop: 12,
+    marginBottom: Platform.OS === 'ios' ? 12 : 0, // Menambah margin bawah hanya untuk iOS
+  },
+  spacer: {
+    height: 200, // Menyesuaikan tinggi sesuai kebutuhan untuk memastikan tombol tetap terlihat saat keyboard muncul
   },
 });
+
+
+export default AuthForm;
+

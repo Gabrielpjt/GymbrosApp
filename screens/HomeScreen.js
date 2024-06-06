@@ -5,7 +5,6 @@ import KelasBox from '../components/ui/KelasBox';
 import { OneReportsContext } from '../contexts/OneReportContext';
 
 function HomeScreen({ navigation }) {
-  const { setOneReports } = useContext(OneReportsContext);
 
   // useEffect(() => {
   //   // Inisialisasi data untuk onereport saat komponen di-render pertama kali

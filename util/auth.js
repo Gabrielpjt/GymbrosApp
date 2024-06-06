@@ -1,9 +1,10 @@
 export async function register(akun) {
   const body = {
-    username: akun.email,
+    username: akun.username,
     password: akun.password,
     gender: akun.gender,
-    address: akun.address,
+    age: akun.age,
+    address: akun.alamat,
     bloodType: akun.golDarah,
     occupation: akun.occupation
   };
@@ -25,10 +26,10 @@ export async function register(akun) {
   return;
 }
 
-export async function login(username, password) {
+export async function login(akun) {
   const body = {
-    username: username,
-    password: password
+    username: akun.username,
+    password: akun.password
   };
 
   console.log(body);

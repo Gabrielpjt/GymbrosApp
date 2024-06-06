@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Navbar from '../components/ui/Navbar';
-import { UsersContext } from '../contexts/UsersContext';
+import { UserContext } from '../contexts/UsersContext';
 import { useIsFocused } from '@react-navigation/native';
 
 function ProfileScreen({ navigation }) {
-  const { users } = useContext(UsersContext);
+  const { user } = useContext(UserContext);
   const isFocused = useIsFocused();
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     async function loadProfile() {
       try {
-        const response = await fetch('https://gymbrosbeapp-production-b2f2.up.railway.app/api/users/' + users.username, {
+        const response = await fetch('https://gymbrosbeapp-production-b2f2.up.railway.app/api/users/' + user.username, {
           method: 'GET'
         });
 
@@ -31,7 +31,7 @@ function ProfileScreen({ navigation }) {
     if (isFocused) {
       loadProfile();
     }
-  }, [isFocused, users.username]);
+  }, [isFocused, user.username]);
 
   return (
     <View style={styles.container}>

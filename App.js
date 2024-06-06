@@ -11,7 +11,7 @@ import PushUp2Screen from './screens/PushUp2Screen';
 import PlankScreen from './screens/Plank';
 import ReportScreen from './screens/ReportScreen';
 import RiwayatScreen from './screens/RiwayatScreen'
-import UsersContextProvider from './contexts/UsersContext';
+import { UserProvider } from './contexts/UsersContext';
 import { OneReportsProvider } from './contexts/OneReportContext';
 import { Colors } from './constants/styles';
 
@@ -54,16 +54,18 @@ function AuthenticatedStack() {
 
 function Navigation() {
   return (
+    
     <OneReportsProvider>
-    <UsersContextProvider>
+    <UserProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Auth' screenOptions={{ headerShown: false }}>
           <Stack.Screen name="App" component={AuthenticatedStack} />
           <Stack.Screen name="Auth" component={AuthStack} />
       </Stack.Navigator>
     </NavigationContainer>
-    </UsersContextProvider>
+    </UserProvider>
     </OneReportsProvider>
+    
   );
 }
 
