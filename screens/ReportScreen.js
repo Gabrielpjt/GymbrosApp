@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     fontSize: 16,
+    color: "#fff"
   },
   total: {
     fontWeight: 'bold',
@@ -117,17 +118,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 20,
+    color: "#fff"
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#FFD700',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 5,
     marginTop: 20,
     alignSelf: 'center',
+    marginBottom: 20,
   },
   buttonText: {
-    color: '#fff',
+    color: '#000',
     fontSize: 16,
     fontWeight: 'bold',
   },

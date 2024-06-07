@@ -21,7 +21,7 @@ function HomeScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>Welcome!</Text>
-        <Text>Pilih Olahraga yang ingin anda lakukan!</Text>
+        <Text style={{color: "white"}}>Pilih Olahraga yang ingin anda lakukan!</Text>
       </View>
       <View style={styles.kelasBoxContainer}>
         <KelasBox 
@@ -54,11 +54,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 32,
+    color:"white",
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 8,
+    color: "#FFD700"
   },
   kelasBoxContainer: {
     alignItems: 'center',

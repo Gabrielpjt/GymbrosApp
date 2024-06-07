@@ -67,16 +67,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 32,
+    color: "#fff"
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
-    color: '#333',
+    color: '#fff',
   },
   infoText: {
     fontSize: 18,
     marginBottom: 8,
-    color: '#555',
+    color: '#fff',
   },
 });

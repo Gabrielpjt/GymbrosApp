@@ -40,10 +40,12 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginBottom: 4,
+    color: "#FFD700"
   },
   navText: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: "#FFD700"
   },
 });
 
