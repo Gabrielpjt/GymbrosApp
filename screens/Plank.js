@@ -46,6 +46,9 @@ function PlankScreen({ navigation }) {
   }, [user.username,isFocused]);
 
   useEffect(() => {
+    if (repetisi > targetRep) {
+      setRepetisi(targetRep);
+    }
     setOneReports((prevReports) => ({ ...prevReports, latihan3: repetisi }));
     if (onereports.heartratetertinggi < maxHeartrate){
       setOneReports((prevReports) => ({ ...prevReports, heartratetertinggi: maxHeartrate }));
@@ -54,7 +57,6 @@ function PlankScreen({ navigation }) {
 
   useEffect(() => {
     let websocket;
-
     if (ws) {
       websocket = ws;
 
@@ -123,7 +125,7 @@ function PlankScreen({ navigation }) {
   
   const intervalHandler = () => {
     let interval;
-    if (repetisi < 30 && !stopRepetisi) { // Hanya bertambah jika stopRepetisi false
+    if (repetisi < targetRep && !stopRepetisi) { // Hanya bertambah jika stopRepetisi false
       interval = setInterval(() => {
         setRepetisi((prevRepetisi) => prevRepetisi + 1);
       }, 1000);
