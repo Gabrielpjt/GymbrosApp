@@ -33,7 +33,7 @@ function ReportScreen({ navigation }) {
       repetisi_latihan_2: onereports.latihan2,
       repetisi_latihan_3: onereports.latihan3,
       jumlah_kalori: totalKalori,
-      HeartRate_tertinggi: 130 // Anda dapat mengganti ini dengan nilai yang relevan
+      HeartRate_tertinggi: onereports.heartratetertinggi // Anda dapat mengganti ini dengan nilai yang relevan
     };
 
     try {

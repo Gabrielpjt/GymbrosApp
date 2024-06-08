@@ -47,6 +47,9 @@ function PlankScreen({ navigation }) {
 
   useEffect(() => {
     setOneReports((prevReports) => ({ ...prevReports, latihan3: repetisi }));
+    if (onereports.heartratetertinggi < maxHeartrate){
+      setOneReports((prevReports) => ({ ...prevReports, heartratetertinggi: maxHeartrate }));
+    }
   }, [repetisi]);
 
   useEffect(() => {

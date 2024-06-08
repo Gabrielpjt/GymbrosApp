@@ -46,6 +46,9 @@ function PushUp2Screen({ navigation }) {
 
   useEffect(() => {
     setOneReports((prevReports) => ({ ...prevReports, latihan2: repetisi }));
+    if (onereports.heartratetertinggi < maxHeartrate){
+      setOneReports((prevReports) => ({ ...prevReports, heartratetertinggi: maxHeartrate }));
+    }
   }, [repetisi]);
 
   useEffect(() => {

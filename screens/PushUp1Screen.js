@@ -47,7 +47,9 @@ function PushUp1Screen({ navigation }) {
 
   useEffect(() => {
     setOneReports((prevReports) => ({ ...prevReports, latihan1: repetisi }));
+    setOneReports((prevReports) => ({ ...prevReports, heartratetertinggi: maxHeartrate }));
   }, [repetisi]);
+  
 
   useEffect(() => {
     let websocket;
