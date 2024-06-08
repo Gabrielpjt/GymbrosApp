@@ -47,13 +47,13 @@ function ProfileScreen({ navigation }) {
           renderItem={({ item }) => (
             <View style={styles.itemContainer}>
               <View style={styles.item}>
-                <Text>Jenis Olahraga: <Text style={styles.text}>{item.jenis_olahraga}</Text></Text>
-                <Text>Repetisi Latihan 1: <Text style={styles.text}>{item.repetisi_latihan_1}</Text></Text>
-                <Text>Repetisi Latihan 2: <Text style={styles.text}>{item.repetisi_latihan_2}</Text></Text>
-                <Text>Repetisi Latihan 3: <Text style={styles.text}>{item.repetisi_latihan_3}</Text></Text>
-                <Text>Jumlah Kalori: <Text style={styles.text}>{item.jumlah_kalori}</Text></Text>
-                <Text>Heart Rate Tertinggi: <Text style={styles.text}>{item.HeartRate_tertinggi}</Text></Text>
-                <Text>Waktu Olahraga: <Text style={styles.text}>{new Date(item.waktu_olahraga).toLocaleString()}</Text></Text>
+                <Text style={{color:"#FFD700"}}>Jenis Olahraga: <Text style={styles.text}>{item.jenis_olahraga}</Text></Text>
+                <Text style={{color:"#FFD700"}} >Repetisi Latihan 1: <Text style={styles.text}>{item.repetisi_latihan_1}</Text></Text>
+                <Text style={{color:"#FFD700"}}>Repetisi Latihan 2: <Text style={styles.text}>{item.repetisi_latihan_2}</Text></Text>
+                <Text style={{color:"#FFD700"}}>Repetisi Latihan 3: <Text style={styles.text}>{item.repetisi_latihan_3}</Text></Text>
+                <Text style={{color:"#FFD700"}}>Jumlah Kalori: <Text style={styles.text}>{item.jumlah_kalori}</Text></Text>
+                <Text style={{color:"#FFD700"}}>Heart Rate Tertinggi: <Text style={styles.text}>{item.HeartRate_tertinggi}</Text></Text>
+                <Text style={{color:"#FFD700"}}>Waktu Olahraga: <Text style={styles.text}>{new Date(item.waktu_olahraga).toLocaleString()}</Text></Text>
               </View>
             </View>
           )}
@@ -72,24 +72,26 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingTop: 20,
+    color: "#fff"
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 8,
-    color: '#333',
+    color: '#fff',
   },
   itemContainer: {
     marginBottom: 20,
   },
   item: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#FFF',
     padding: 10,
     borderRadius: 5,
   },
   text: {
     fontWeight: 'bold',
+    color: "#FFF"
   },
 });
 

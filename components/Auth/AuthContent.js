@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 32,
     padding: 16,
     borderRadius: 8,
-    backgroundColor: Colors.primary800,
+    backgroundColor: Colors.primary500,
     elevation: 2,
     shadowColor: 'black',
     shadowOffset: { width: 1, height: 1 },
@@ -99,5 +99,6 @@ const styles = StyleSheet.create({
   },
   buttons: {
     marginTop: 8,
+    backgroundColor: "#FFD700",
   },
 });
